@@ -15,3 +15,6 @@ console.log(`Make string from arr1 -> ${arr1.join()}`);
 
 const filteredArr = arr1.filter(el => el < 3);
 console.log(filteredArr);
+
+const mappedArray = arr1.map(el => el * 2);
+console.log(mappedArray);

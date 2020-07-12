@@ -67,3 +67,11 @@ myArrProto.filter = function filter(callback) {
     }
     return filterArray;
 }
+
+myArrProto.map = function map(callback) {
+    const mapArray = new MyArray();
+    for (let i = 0; i < this.length; i++) {
+        mapArray.push(callback(this[i], i, this));
+    }
+    return mapArray;
+}
