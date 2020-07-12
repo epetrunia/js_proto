@@ -92,3 +92,34 @@ myArrProto.reduce = function reduce(callback, initialValue) {
     }
     return accumulator;
 }
+
+myArrProto.concat = function concat() {
+    const newArr = new this.constructor();
+
+    for (let i = 0; i < this.length; i++) {
+        newArr.push(this[i]);
+    }
+
+    for (let i = 0; i < arguments.length; i++) {
+        if (arguments[i] instanceof MyArray) {
+            for (let j = 0; j < arguments[i].length; j++) {
+                newArr.push(arguments[i][j]);
+            }
+            continue;
+        }
+        newArr.push(arguments[i]);
+    }
+    return newArr;
+}
+
+myArrProto.flat = function flat(depth = 1) {
+    let flatArray = new this.constructor();
+
+    for (let i = 0; i < this.length; i++) {
+        flatArray = flatArray.concat(this[i]);
+    }
+    if (--depth > 0) {
+        flatArray = flatArray.flat();
+    }
+    return flatArray;
+}
