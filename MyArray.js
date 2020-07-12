@@ -57,3 +57,13 @@ myArrProto.join = function join(separator = ',') {
     str += String(this[this.length - 1]);
     return str;
 }
+
+myArrProto.filter = function filter(callback) {
+    const filterArray = new MyArray();
+    for (let i = 0; i < this.length; i++) {
+        if (callback(this[i], i, this)){
+            filterArray.push(this[i]);
+        }
+    }
+    return filterArray;
+}
