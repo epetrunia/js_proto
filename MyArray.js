@@ -61,7 +61,7 @@ myArrProto.join = function join(separator = ',') {
 myArrProto.filter = function filter(callback) {
     const filterArray = new MyArray();
     for (let i = 0; i < this.length; i++) {
-        if (callback(this[i], i, this)){
+        if (callback(this[i], i, this)) {
             filterArray.push(this[i]);
         }
     }
@@ -74,4 +74,21 @@ myArrProto.map = function map(callback) {
         mapArray.push(callback(this[i], i, this));
     }
     return mapArray;
+}
+
+myArrProto.reduce = function reduce(callback, initialValue) {
+    let counter;
+    let accumulator;
+    if (initialValue === undefined) {
+        counter = 1;
+        accumulator = this[0];
+    } else {
+        counter = 0;
+        accumulator = initialValue;
+    }
+
+    for (let i = counter; i < this.length; i++) {
+        accumulator = callback(accumulator, this[i], i, this);
+    }
+    return accumulator;
 }

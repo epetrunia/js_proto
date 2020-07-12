@@ -18,3 +18,5 @@ console.log(filteredArr);
 
 const mappedArray = arr1.map(el => el * 2);
 console.log(mappedArray);
+
+console.log(`Using reduce method to get sum of elements in array -> ${arr1.reduce((sum, current) => sum + current, 0)}`);
