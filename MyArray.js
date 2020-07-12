@@ -123,3 +123,10 @@ myArrProto.flat = function flat(depth = 1) {
     }
     return flatArray;
 }
+
+myArrProto.pop = function pop() {
+    const lastElem = this[this.length - 1];
+    delete this[this.length - 1];
+    this.length--;
+    return lastElem;
+}
