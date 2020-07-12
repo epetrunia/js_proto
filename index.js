@@ -8,3 +8,5 @@ console.log(arr1);
 
 const findElem = arr1.find(el => el > 1);
 console.log(`Find element more than 1 -> ${findElem}`);
+
+console.log(`Is arr1 includes 3? ${arr1.includes(3)}`);

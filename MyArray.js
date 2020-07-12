@@ -1,6 +1,7 @@
 'use strict';
 
 function MyArray() {
+
     if (!new.target) {
         return new MyArray();
     }
@@ -16,6 +17,7 @@ const myArrProto = new MyArray();
 MyArray.prototype = myArrProto;
 
 myArrProto.push = function push() {
+
     for (let i = 0; i < arguments.length; i++) {
         this[this.length++] = arguments[i];
     }
@@ -24,6 +26,7 @@ myArrProto.push = function push() {
 }
 
 myArrProto.find = function find(callback) {
+
     let element;
     for (let i = 0; i < this.length; i++) {
         if (callback(this[i], i, this)) {
@@ -32,4 +35,16 @@ myArrProto.find = function find(callback) {
         }
     }
     return element;
+}
+
+myArrProto.includes = function includes(item, from = 0) {
+    if (from < 0) {
+        from = this.length + from;
+    }
+    for (let i = from; i < this.length; i++) {
+        if (this[i] === item) {
+            return true;
+        }
+    }
+    return false;
 }
