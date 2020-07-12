@@ -1,7 +1,7 @@
 'use strict';
 
 function MyArray() {
-    if(!new.target) {
+    if (!new.target) {
         return new MyArray();
     }
 
@@ -21,4 +21,15 @@ myArrProto.push = function push() {
     }
 
     return this.length;
+}
+
+myArrProto.find = function find(callback) {
+    let element;
+    for (let i = 0; i < this.length; i++) {
+        if (callback(this[i], i, this)) {
+            element = this[i];
+            break;
+        }
+    }
+    return element;
 }
